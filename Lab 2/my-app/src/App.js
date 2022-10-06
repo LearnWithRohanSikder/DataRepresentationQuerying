@@ -25,8 +25,8 @@ class App extends React.Component {
               <Navbar.Brand href="/">Navbar</Navbar.Brand>
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/footer">Footer</Nav.Link>
-                <Nav.Link href="/header">Footer</Nav.Link>
+                <Nav.Link href="/footer">Read</Nav.Link>
+                <Nav.Link href="/header">Create</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
