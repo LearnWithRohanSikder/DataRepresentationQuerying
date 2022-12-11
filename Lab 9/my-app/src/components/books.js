@@ -9,6 +9,8 @@ export class Books extends React.Component {
         {/*In React, the map method is used to traverse and display a list of similar objects of a component. A map is not a feature of React. Instead, it is the standard JavaScript function that could be called on an array. The map() method creates a new array by calling a provided function on every element in the calling array.*/}
         return this.props.books.map(
             (books) => {
+                 
+            {/*Return books with key and relods data*/}
                 return <BookItems books={books} key={books._id} Reload = {this.props.Reload}></BookItems>
             }
         );

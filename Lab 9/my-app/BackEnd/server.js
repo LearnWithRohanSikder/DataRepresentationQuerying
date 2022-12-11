@@ -45,6 +45,7 @@ const bookModel = mongoose.model('AllBooks', bookSchema);
 
 //Can use nodemon to make it so don't need to stop node server to update changes
 
+//Post request to get title, cover, author
 app.post('/api/books', (req, res) => {
     console.log(req.body); 
 
@@ -56,36 +57,39 @@ app.post('/api/books', (req, res) => {
     res.send('Data Recieved');
 })
 
+//Gets all json data from /api/books
 app.get('/api/books', (req, res) => {
     bookModel.find((error, data) => {
         res.json(data);
     })
 })
 
+//Gets particular json data from /api/books @ :id
 app.get('/api/book/:id', (req, res) =>{
     console.log(req.params.id);
-
+    //The findById() function is used to find a single document by its _id field
     bookModel.findById(req.params.id, (error, data) => {
         res.json(data);
     })
 })
 
+//Delete request comes in from /api/book/:id and then bookModel finds it and updates it and sends new data
 app.put('/api/book/:id',(req,res) =>{
     console.log("Update: " + req.params.id);
-
+    //The findByIdAndUpdate() function is used to find a matching document, updates it according to the update arg, passing any options, and returns the found document (if any) to the callback
     bookModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
         (error,data)=>{
             res.send(data);
         })
 })
 
+//Put request comes in from /api/book/:id and then bookModel finds it and updates it and sends new data
 app.delete('/api/book/:id', (req,res) => {
     console.log('Deleting: ' + req.params.id); 
-
+    //The findByIdAndDelete() function is used to find a matching document, removes it, and passing the found document
     bookModel.findByIdAndDelete({_id:req.params.id}, (error,data)=>{ 
         res.send(data);
     }) 
-
 })
 
 app.listen(port, () => {

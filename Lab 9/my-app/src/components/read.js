@@ -6,6 +6,7 @@ export class Read extends React.Component {
 
     constructor(){
         super();
+        //Binds reload reload method
         this.Reload = this.Reload.bind(this);
     }
 
